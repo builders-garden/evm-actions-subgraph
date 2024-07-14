@@ -1,0 +1,25 @@
+type ActionAdded @entity(immutable: true) {
+  id: Bytes!
+  actionBaseUrl: String! # string
+  actionOwner: Bytes! # address
+  status: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ActionConfirmed @entity(immutable: true) {
+  id: Bytes!
+  actionBaseUrl: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ActionRemoved @entity(immutable: true) {
+  id: Bytes!
+  actionBaseUrl: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

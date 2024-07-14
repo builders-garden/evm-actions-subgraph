@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EVMActionsRegistry
+    network: base
+    source:
+      address: "0x4df80936f67cA33E5Ddc40159652Ab8dd4f100c5"
+      abi: EVMActionsRegistry
+      startBlock: 17062107
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ActionAdded
+        - ActionConfirmed
+        - ActionRemoved
+      abis:
+        - name: EVMActionsRegistry
+          file: ./abis/EVMActionsRegistry.json
+      eventHandlers:
+        - event: ActionAdded(string,address,uint8)
+          handler: handleActionAdded
+        - event: ActionConfirmed(string)
+          handler: handleActionConfirmed
+        - event: ActionRemoved(string)
+          handler: handleActionRemoved
+      file: ./src/evm-actions-registry.ts
